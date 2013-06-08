@@ -1,15 +1,25 @@
-<h1>Create new post</h1>
+  <div class="well row-fluid">
+    <h1>Create new post</h1>
+  </div>
 
-<%= form_for @post do |f| %>
+    <div class="well row-fluid">
+    <%= form_for @post do |f| %>
 
-	<%= render 'shared/form_errors', object: f.object %>
+      <%= render 'shared/form_errors', object: f.object %>
 
-	<%= f.label :title %>
-	<%= f.text_field :title %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      
+      <% filters = [['Social Life', 'social'],['Love Life', 'love'], ['Positivity', 'positivity'], ['Classes', 'classes'], ['Journals', 'journals'],['Fluency', 'fluency'], ['Motivation', 'motivation'],['Videos', 'videos']] %>
+      
+      <%= f.label :filter %>
+      <%= f.select(:filter, options_for_select(filters), { multiple: "multiple" }) %>
 
-	<%= f.label :body %>
-	<%= f.text_area :body %>
+      <%= f.label :body %>
+      
+      <textarea id="post_body" class="editor" name="post[body]" placeholder="Enter text ..." style="width:95%;min-height:600px;"></textarea>
 
-	<%= f.submit "Create post" %>
+      <%= f.submit "Create post" %>
 
-<% end %>
+    <% end %>
+  </div>

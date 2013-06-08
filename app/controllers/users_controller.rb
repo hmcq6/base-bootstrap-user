@@ -4,6 +4,14 @@ class UsersController < ApplicationController
 		@user = User.new
 		@users = User.all
 	end
+  
+  def welcome
+    @user = User.new
+    @users = User.all
+    
+    @posts = Post.all
+    
+  end
 
 	def create
 		@user = User.new(params[:user])
