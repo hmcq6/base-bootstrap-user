@@ -1,24 +1,28 @@
-<h1>Register</h1>
 
-<% if @users.try(:any?) %>
-	<ul>
-		<% @users.each do |u| %>
-		<li><%= u.email %></li>
-		<% end %>
-	</ul>
-<% end %>
+<%= render 'users/welcome' %>
 
-<%= form_for @user do |f| %>
-	<%= render 'shared/form_errors', object: f.object %>
+<div id="create_user" class="well" title="Create an account!">
+  <%= form_for @user do |f| %>
+    <%= render 'shared/form_errors', object: f.object %>
 
-	<%= f.label :email %>
-	<%= f.text_field :email %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name %>
+    
+    <%= f.label :email %>
+    <%= f.text_field :email %>
 
-	<%= f.label :password %>
-	<%= f.password_field :password %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
 
-	<%= f.label :password_confirmation %>
-	<%= f.password_field :password_confirmation %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
 
-	<%= f.submit "Create account" %>
-<% end %>
+    <%= f.submit "Create account" %>
+  <% end %>
+</div>

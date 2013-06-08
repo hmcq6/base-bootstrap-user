@@ -22,6 +22,10 @@ module SessionsHelper
 	def signed_in?
 		!current_user.nil?
 	end
+  
+  def is_guest?
+    current_user.guest
+  end
 
 	def ensure_signed_in
 		unless signed_in?
@@ -29,6 +33,21 @@ module SessionsHelper
 			redirect_to sign_in_path, alert: "Sign in below"
 		end
 	end
+  
+  def ensure_not_guest
+    unless !is_guest?
+      session[:previous_url] = request.url
+      redirect_to sign_in_path, alert: "Sign in below"
+    end
+  end
+  
+  def set_cur_user
+    if current_user.nil?
+      @cur_user = User.new(first_name: "token", guest: true )
+    else
+      @cur_user = current_user
+    end
+  end
 
 	def ensure_correct_user(user)
 		user == current_user

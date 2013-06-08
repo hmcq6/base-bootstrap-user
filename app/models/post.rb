@@ -11,7 +11,7 @@
 #
 
 class Post < ActiveRecord::Base
-	attr_accessible :body, :title
+	attr_accessible :body, :title, :filter
 
 	validates :title, presence: true, length: { maximum: 255 }
 	validates :body, presence: true

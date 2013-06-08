@@ -1,0 +1,55 @@
+<!-- Jumbotron -->
+      <div class="jumbotron well container-fluid">
+        <div class="row-fluid">
+          <div class="span4 well" style="height:300px;">
+            <%= image_tag "Mike_1.jpg", style: "height:260px;" %>
+          </div>
+          <div class="span4 well" style="height:300px;">
+            <%= image_tag "Mike_2.jpg", style: "height:260px;" %>
+          </div>
+          <div class="span4 well" style="height:300px;">
+            <%= image_tag "Mike_3.jpg", style: "height:260px;" %>
+          </div>
+        </div>
+        <h1>The Exceptional Conversationalist</h1>
+        <p class="lead">What makes us exceptional is our unique style of speech</p>
+        <a class="btn btn-large btn-success" href="#">Get started today</a>
+      </div>
+
+      <hr>
+
+      <!-- Example row of columns -->
+      <div class="row-fluid">
+        <div class="span4">
+          <h2>Social Skills</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="span4">
+          <h2>External Resources</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+       </div>
+        <div class="span4">
+          <h2>Reviews</h2>
+          <table>
+            <thead>
+              <tr>
+                <td>Title</td><td>Author</td><td>Date</td>
+              </tr>
+            </thead>
+            
+            <% @posts.each do |p| %>
+            
+            <tr>
+                <td><%= p.title %></td>
+            </tr>
+            
+            <% end %>
+          </table>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+      </div>
+
+      <hr>
+
