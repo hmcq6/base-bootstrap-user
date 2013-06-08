@@ -1,3 +1,5 @@
-jQuery ->
-	el = $('input#user_email')
-	el.focus() if el.length
+$ ->
+  ($ '#create_user').dialog({ 
+    modal: true,
+    minWidth: 400,
+    })

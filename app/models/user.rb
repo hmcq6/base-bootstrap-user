@@ -15,9 +15,13 @@
 
 class User < ActiveRecord::Base
 	has_secure_password
-	attr_accessible :email, :password, :password_confirmation
+	attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :user_name, :guest
 
+  before_create :set_defaults
+  
 	validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :user_name, presence: true, uniqueness: { case_sensitive: false }, format: { with: /^[a-z0-9\-_]+$/i }
+                                                                                    
 	validates :password, length: { minimum: 6 }
 	#validates :password_confirmation
 
@@ -26,6 +30,10 @@ class User < ActiveRecord::Base
 
 	has_many :posts
 
+  
+  def set_defaults
+    self.guest ||= true
+  end
 
 	def send_password_reset
 		generate_token(:password_reset_token)

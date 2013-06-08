@@ -4,6 +4,10 @@ gem 'rails', '3.2.8'
 
 gem 'bootstrap-sass'
 
+gem 'wysihtml5-rails'
+
+gem "bootstrap-wysihtml5-rails"
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -37,6 +41,7 @@ group :test do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 

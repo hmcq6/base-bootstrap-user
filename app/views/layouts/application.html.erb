@@ -1,28 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UserAuth</title>
+  <title>The Exceptional Conversationalist</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
 </head>
 <body>
 
-<% if signed_in? %>
-<%= current_user.email %><br/>
-<%= link_to "All Posts", posts_path %>
-<%= link_to "Sign out", sign_out_path, method: :delete %>
+  <% flash.each do |name, message| %>
+    <div class="flash flash_<%= name %>"><%= message %></div>
+  <% end %>
 
-<% else %>
-<%= link_to "Sign in", sign_in_path %>
-<%= link_to "Register", register_path %>
-<% end %>
+  <div class="container" id="body_bg">
 
-<% flash.each do |name, message| %>
-	<div class="flash flash_<%= name %>"><%= message %></div>
-<% end %>
+    <div class="masthead">
+      <div class="row-fluid" style="height: 60px;">
+        <h3 class="muted span6">The Exceptional Conversationalist</h3>
+        <span id="login_register" class="span6 text-right">
+        
+          <% if signed_in? %>
+            <div class="btn-group">
+              <button class="btn"><%= link_to "Hello #{current_user.first_name}", posts_path %></button>
+              <button class="btn dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Logout", sign_out_path, { method: :delete } %></li>
+                <li><a href="#">Upgrade Account</a></li>
+              </ul>
+            </div>
+          <% else %>
+            <%= link_to "Sign in", sign_in_path, { class: "btn" } %>
+            <%= link_to "Register", register_path, { class: "btn btn-primary" } %>
+          <% end %>
+        
+        </span>
+      </div>
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul class="nav">
+              <li <%= if(params[:filter] == nil) then 'class="active"' end %> ><a href="/">Home</a></li>
+              <li <%= if(params[:filter] == "social") then 'class="active"' end %> ><a href="/posts/social">Social Life</a></li>
+              <li><a href="/posts/love">Love Life</a></li>
+              <li><a href="/posts/positivity">Positivity</a></li>
+              <li><a href="/posts/classes">Classes</a></li>
+              <li><a href="/posts/journals">Journals</a></li>
+              <li><a href="/posts/fluency">Fluency</a></li>
+              <li><a href="/posts/motivation">Motivation</a></li>
+              <li><a href="/posts/videos">Videos</a></li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- /.navbar -->
+    </div>
 
-<%= yield %>
+      <div class="row-fluid">
+        <div class="container-fluid">
+          <%= yield %>
+        </div>
+      </div>
+      
+      <div class="row-fluid">
+        <div class="footer span12">
+          <p>&copy; The Exceptional Conversationalist 2013</p>
+        </div>
+      </div>
 
-</body>
+  </body>
 </html>

@@ -7,9 +7,9 @@ UserAuth::Application.routes.draw do
 	get 'reset_password', to: 'password_resets#new'
 	get 'register', to: 'users#new'
 	get 'sign_in', to: 'sessions#new'
-	delete 'sign_out', to: 'sessions#destroy'
-
-	root to: 'users#new'
+	match 'sign_out' => 'sessions#destroy'
+  
+	root to: 'users#welcome'
 
 # The priority is based upon order of creation:
 # first created -> highest priority.
