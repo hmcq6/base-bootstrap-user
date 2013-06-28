@@ -14,11 +14,68 @@
       
       <%= f.label :filter %>
       <%= f.select(:filter, options_for_select(filters), { multiple: "multiple" }) %>
+  
+      <input type="text" id="dummy" class="input" style="margin-left:20px;" />      
+      <a id="file_upload_button" class="btn" style="margin-bottom:10px;"> Browse </a>
+      <%= f.file_field :video %>
+      
+      <!-- slides -->
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th><div class="text-center">#</div></th>
+            <th><div class="text-center">Name:</div></th>
+            <th><div class="text-center">Content:</div></th>
+            <th><div class="text-center">Timer:</div></th>
+            <th></th>
+          </tr>
+        <thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="text-center">
+                <input type="text" id="post_slide" name="post[slide][0][order]" style="display:none;" value="1" />1
+              </div>
+            </td>
+            <td>
+              <div class="text-center">
+                <input type="text" id="post_slide" name="post[slide][0][name]" class="input" />
+              </div>
+            </td>
+            <td>
+              <div class="text-center">
+                <textarea id="post_slide" name="post[slide][0][content]" class="input"></textarea>
+              </div>
+            </td>
+            <td>
+              <div class="text-center">
+                <div class="input-prepend input-append">
+                  <input type="button" class="btn" value="+" />
+                  <input type="text" id="post_slide" name="post[slide][0][timer]" class="input-mini text-center" />
+                  <input type="button" class="btn" value="-" />
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="text-center">
+                <a class="btn disabled"><i class="icon-remove"></i></a>
+              </div>
+            </td>
+            <td>
+              <div class="text-center">
+                <a class="btn"><i class="icon-plus"></i></a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
       <%= f.label :body %>
+      <input type="textarea" id="editor" id="post_body" name="post[body]" >
+         
       
-      <textarea id="post_body" class="editor" name="post[body]" placeholder="Enter text ..." style="width:95%;min-height:600px;"></textarea>
-
+      </div>
+      
       <%= f.submit "Create post" %>
 
     <% end %>

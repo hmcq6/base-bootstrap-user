@@ -19,6 +19,11 @@ class PostsController < ApplicationController
     
     template = (@filter.nil?) ? 'posts/show' : 'posts/filtered'
     
+    logger.info "-------------------------------------"
+    logger.info @post
+    logger.info "-------------------------------------"
+    
+    
     respond_to do |format|
       format.html { render :html, template: template }
       format.xml
@@ -32,7 +37,25 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = current_user.posts.build(params[:post])
+    
+		@post = Post.new(:title => params[:post][:title], :user_id => current_user.id, :body => params[:post][:body] )
+    
+    if !params[:post][:video].nil?
+    
+      directory = 'app/assets/videos/'
+      
+      path = File.join(directory, params[:post][:video].original_filename) 
+      
+      tmp_file = File.read(params[:post][:video].tempfile)
+      
+      File.open(path, "w+") { |f| f.write tmp_file }
+      
+      @video = Video.create( :name => params[:post][:video].original_filename, :url => "/assets/#{params[:post][:video].original_filename}" )
+      
+      @post[:video_link] = @video.url
+      
+    end
+    #current_user.posts.build(params[:post])
 		if @post.save
 			redirect_to posts_path, notice: "Post created successfully"
 		else
