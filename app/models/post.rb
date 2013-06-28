@@ -11,7 +11,7 @@
 #
 
 class Post < ActiveRecord::Base
-	attr_accessible :body, :title, :filter
+	attr_accessible :body, :title, :filter, :video, :user_id
 
 	validates :title, presence: true, length: { maximum: 255 }
 	validates :body, presence: true
@@ -20,5 +20,7 @@ class Post < ActiveRecord::Base
 	#default_scope order: 'posts.created_at DESC'
 
 	belongs_to :user
+  has_one :video
+  has_many :slides
 
 end
