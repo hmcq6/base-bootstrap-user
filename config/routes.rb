@@ -1,4 +1,6 @@
 UserAuth::Application.routes.draw do
+  resources :slides
+
 	resources :users
 	resources :sessions, only: [:new, :create, :destroy]
 	resources :password_resets

@@ -39,12 +39,12 @@
               </tr>
             </thead>
             
-            <% @posts.each do |p| %>
-            
-            <tr>
-                <td><%= p.title %></td>
-            </tr>
-            
+            <% if !@posts.nil? %>
+              <% @posts.each do |p| %>
+                <tr>
+                  <td><%= p.title %></td>
+                </tr>
+              <%end%>
             <% end %>
           </table>
           <p><a class="btn" href="#">View details &raquo;</a></p>
