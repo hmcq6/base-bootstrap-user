@@ -1,0 +1,73 @@
+<div class="row-fluid">
+  <div class="span12">
+    <div class="">
+      <!--<div class="row-fluid">
+        <h1 class="span6">All Your Posts</h1>
+
+        <div class="span6 text-right" style="padding-top:15px;">
+          <% if !@cur_user.guest? then disabled = "" else disabled = "disabled" end %>
+          <%= link_to "Create New Post", new_post_path, { class: "btn btn-info #{disabled}" } %>
+        </div>
+      </div>-->
+      
+      <ul class="nav nav-tabs" id="user_nav" >
+        <li class="active">
+          <a href="#upgrade">Upgrade</a>
+        </li>
+        <li>
+          <a href="#posts">Posts</a>
+        </li>
+        <li>
+          <a href="#settings">Settings</a>
+        </li>
+      </ul>
+      
+      <div class="tab-content">
+        <div class="tab-pane active" id="upgrade">
+          <div class="well">
+            hey you should really become a member
+          </div>
+        </div>
+        <div class="tab-pane" id="posts">
+          <div class="well">
+
+            <div class="row-fluid">
+              <h1 class="span6">All Your Posts</h1>
+
+              <div class="span6 text-right" style="padding-top:15px;">
+                <% if !@cur_user.guest? then disabled = "" else disabled = "disabled" end %>
+                <%= link_to "Create New Post", new_post_path, { class: "btn btn-info #{disabled}" } %>
+              </div>
+            </div>
+          
+          <% if @posts.any? %>
+            
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Content</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              
+                <% @posts.each do |post| %>
+                  <tr>
+                    <td><%= post.title %></td>
+                    <td></td>
+                    <td><%= link_to "delete", post_path(post), { method: :delete, data: { confirm: 'Sure?' }, class: "btn btn-danger pull-right" } %></td>
+                  </tr>
+                <% end %>
+              
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+        <div class="tab-pane" id="settings">
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

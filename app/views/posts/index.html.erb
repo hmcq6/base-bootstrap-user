@@ -5,7 +5,8 @@
         <h1 class="span6">All Your Posts</h1>
 
         <div class="span6 text-right" style="padding-top:15px;">
-          <%= link_to "Create New Post", new_post_path, { class: "btn btn-info" } %>
+          <% if !@cur_user.guest? then disabled = "" else disabled = "disabled" end %>
+          <%= link_to "Create New Post", new_post_path, { class: "btn btn-info #{disabled}" } %>
         </div>
       </div>
     </div>

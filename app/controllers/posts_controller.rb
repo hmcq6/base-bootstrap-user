@@ -19,11 +19,6 @@ class PostsController < ApplicationController
     
     template = (@filter.nil?) ? 'posts/show' : 'posts/filtered'
     
-    logger.info "-------------------------------------"
-    logger.info @post
-    logger.info "-------------------------------------"
-    
-    
     respond_to do |format|
       format.html { render :html, template: template }
       format.xml
@@ -38,7 +33,7 @@ class PostsController < ApplicationController
 
 	def create
     
-		@post = Post.new(:title => params[:post][:title], :user_id => current_user.id, :body => params[:post][:body] )
+		@post = Post.new(:title => params[:post][:title], :user_id => current_user.id, :body => params[:post][:body], :filter => params[:post][:filter] )
     
     if !params[:post][:video].nil?
     

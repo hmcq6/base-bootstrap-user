@@ -38,7 +38,7 @@
         
           <% if signed_in? %>
             <div class="btn-group">
-              <button class="btn"><%= link_to "Hello #{current_user.first_name}", posts_path %></button>
+              <button class="btn"><%= link_to "Hello #{current_user.first_name}", current_user %></button>
               <button class="btn dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
               </button>
