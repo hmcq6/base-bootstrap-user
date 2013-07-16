@@ -13,7 +13,7 @@
           <% if is_guest(@cur_user) %>
             <% classes = 'btn btn-info disabled' %>
           <%else%>
-            <% classes = 'btn btn-info' %>
+            <% classes = 'btn btn-info new-post' %>
           <%end%>
             <%= link_to "Create New Post", new_post_path, { class: classes } %>
 
@@ -45,7 +45,7 @@
           <td><%= link_to post.title, post_path(post) %></td>
             <% user = User.find(post.user_id) %>
           <td><%= link_to user.user_name, user_path(user) %></td>
-          <td><%= post.created_at %></td>
+          <td><%= distance_of_time_in_words(post.created_at, Time.now) %> ago</td>
 
         <%end%>
         </tbody>
