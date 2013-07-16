@@ -1,14 +1,24 @@
 <!-- Jumbotron -->
       <div class="jumbotron well container-fluid">
         <div class="row-fluid">
-          <div class="span4 well" style="height:300px;">
-            <%= image_tag "Mike_1.jpg", style: "height:260px;" %>
-          </div>
-          <div class="span4 well" style="height:300px;">
-            <%= image_tag "Mike_2.jpg", style: "height:260px;" %>
-          </div>
-          <div class="span4 well" style="height:300px;">
-            <%= image_tag "Mike_3.jpg", style: "height:260px;" %>
+          <div class="well darker" >
+            <div id="polaroid" >
+              <figure>
+                <%= image_tag "Mike_1.jpg", style: "height:260px;" %>
+                <figcaption>On the stage!</figcaption>
+              </figure>
+
+              <figure>
+                <%= image_tag "Mike_2.jpg", style: "height:260px;" %>
+                <figcaption>On the Go!</figcaption>
+              </figure>
+
+              <figure>
+                <%= image_tag "Mike_3.jpg", style: "height:260px;" %>
+                <figcaption>Anywhere!</figcaption>
+              </figure>
+
+            </div>
           </div>
         </div>
         <h1>The Exceptional Conversationalist</h1>
@@ -38,7 +48,7 @@
                 <td>Title</td><td>Author</td><td>Date</td>
               </tr>
             </thead>
-            
+
             <% if !@posts.nil? %>
               <% @posts.each do |p| %>
                 <tr>

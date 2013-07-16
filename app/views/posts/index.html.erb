@@ -12,13 +12,13 @@
     </div>
   </div>
 </div>
-    
+
 <div class="row-fluid">
   <div class="span12">
     <% if @posts.any? %>
-    
+
     <div class="well">
-    
+
       <% @posts.each do |post|%>
 
       <h2 class="text-center"><%= post.title %></h2>
@@ -26,12 +26,12 @@
         <%= link_to "delete", post_path(post), { method: :delete, data: { confirm: 'Sure?' }, class: "btn btn-danger pull-right" } %>
         <%= raw(post.body) %>
       </div>
-      
+
 
       <hr />
-      
+
       <%end%>
-      
+
     </div>
 
     <% end %>

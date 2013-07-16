@@ -9,18 +9,18 @@
 
       <%= f.label :title %>
       <%= f.text_field :title %>
-      
+
       <% filters = [['Social Life', 'social'],['Love Life', 'love'], ['Positivity', 'positivity'], ['Classes', 'classes'], ['Journals', 'journals'],['Fluency', 'fluency'], ['Motivation', 'motivation'],['Videos', 'videos']] %>
-      
+
       <%= f.label :filter %>
       <%= f.select(:filter, options_for_select(filters), { multiple: "multiple" }) %>
-  
-      <input type="text" id="dummy" class="input" style="margin-left:20px;" />      
+
+      <input type="text" id="dummy" class="input" style="margin-left:20px;" />
       <a id="file_upload_button" class="btn" style="margin-bottom:10px;"> Browse </a>
       <%= f.file_field :video %>
-      
+
       <!-- slides -->
-      <table class="table table-striped table-bordered">
+      <table class="table table-striped table-bordered" id="slides">
         <thead>
           <tr>
             <th><div class="text-center">#</div></th>
@@ -72,10 +72,10 @@
 
       <%= f.label :body %>
       <input type="textarea" id="editor" id="post_body" name="post[body]" >
-         
-      
+
+
       </div>
-      
+
       <%= f.submit "Create post" %>
 
     <% end %>

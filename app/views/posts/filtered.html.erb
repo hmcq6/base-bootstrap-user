@@ -9,26 +9,26 @@
       <div class="row-fluid">
         <h1 class="span3"><%= @filter.capitalize %></h1>
 
-        <div class="span6 text-right" style="padding-top:15px;">
+        <div class="span9 text-right" style="padding-top:15px;">
           <% if is_guest(@cur_user) %>
             <% classes = 'btn btn-info disabled' %>
           <%else%>
             <% classes = 'btn btn-info' %>
           <%end%>
             <%= link_to "Create New Post", new_post_path, { class: classes } %>
-          
+
         </div>
       </div>
     </div>
   </div>
 </div>
-  
-  
+
+
 <div class="row-fluid">
   <div class="span12">
-    
+
     <div class="well">
-    
+
       <table class="table table-striped">
         <thead>
           <tr>
@@ -37,10 +37,10 @@
             <th>Date</th>
           </tr>
         </thead>
-        
+
         <tbody>
         <% @posts.each do |post|%>
-        
+
         <tr>
           <td><%= link_to post.title, post_path(post) %></td>
             <% user = User.find(post.user_id) %>
@@ -49,9 +49,9 @@
 
         <%end%>
         </tbody>
-        
+
       </table>
-      
+
     </div>
 
   </div>

@@ -13,6 +13,4 @@
 //= require jquery
 //= require jquery.ui.all
 //= require bootstrap
-//= require jquery.hotkeys
-//= require bootstrap-wysiwyg
 //= require_tree .
