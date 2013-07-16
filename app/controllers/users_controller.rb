@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
 
-  before_filter :set_cur_user, :only => :show
-  
+  before_filter :set_cur_user, :only => [ :show, :welcome ]
+
 	def new
 		@user = User.new
 		@users = User.all
 	end
-  
+
   def welcome
     @user = User.new
     @users = User.all
-    
+
     @posts = Post.all
-    
+
   end
 
 	def create
@@ -24,11 +24,11 @@ class UsersController < ApplicationController
 			render :new
 		end
 	end
-  
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
-    
+
   end
 
 end
