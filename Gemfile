@@ -4,9 +4,7 @@ gem 'rails', '3.2.8'
 
 gem 'bootstrap-sass'
 
-gem 'wysihtml5-rails'
-
-gem "bootstrap-wysihtml5-rails"
+gem 'ckeditor_rails'
 
 # Payment Gems
 gem "authorize-net"
